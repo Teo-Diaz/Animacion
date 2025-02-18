@@ -1,4 +1,4 @@
 # Animacion
 
 Rig 1 - Mateo Díaz 
-Assets/Entregas/Mateo/Grabación1.mp4
+![video del ejercicio](/src/Assets/Entregas/Mateo/Grabación1.mp4)
