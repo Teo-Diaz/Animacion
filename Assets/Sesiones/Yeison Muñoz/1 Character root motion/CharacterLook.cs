@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Composites;
 
-public class CharacterLook : MonoBehaviour
+public class CharacterLook : MonoBehaviour, ICharacterComponent
 {
     [SerializeField] private Transform target;
     [SerializeField] private FloatDampener horizontalDampener;
@@ -12,6 +12,11 @@ public class CharacterLook : MonoBehaviour
 
     [SerializeField] private float horizontalRotationSpeed;
     [SerializeField] private float verticalRotationSpeed;
+    [SerializeField] private Vector2 verticalRotationLimits;
+
+    [field:SerializeField] public Character ParentCharacter { get; set; }
+
+    private float verticalRotation;
 
     public void OnLook(InputAction.CallbackContext ctx)
     {
@@ -28,9 +33,25 @@ public class CharacterLook : MonoBehaviour
         {
             throw new NullReferenceException("Look target is null, assign it in inspector");
         }
+        
+        if(ParentCharacter.LockTarget != null)
+        {
+            Vector3 lookDirection = (ParentCharacter.LockTarget.position - target.position).normalized;
+            Quaternion rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+            target.rotation = rotation;
 
-        Quaternion horizontalRotation = Quaternion.AngleAxis(horizontalDampener.CurrentValue * horizontalRotationSpeed, transform.up);
-        transform.rotation *= horizontalRotation;
+            return;
+        }
+
+        target.RotateAround(target.position, transform.up, horizontalDampener.CurrentValue * horizontalRotationSpeed * Time.deltaTime);
+        //Quaternion horizontalRotation = Quaternion.AngleAxis(horizontalDampener.CurrentValue * horizontalRotationSpeed * Time.deltaTime, transform.up);
+        //target.rotation *= horizontalRotation;
+
+        verticalRotation += verticalDampener.CurrentValue * verticalRotationSpeed * Time.deltaTime;
+        verticalRotation = Mathf.Clamp(verticalRotation, verticalRotationLimits.x, verticalRotationLimits.y);
+        Vector3 euler = target.localEulerAngles;
+        euler.x = verticalRotation;
+        target.localEulerAngles = euler;
     }
 
     private void Update()
