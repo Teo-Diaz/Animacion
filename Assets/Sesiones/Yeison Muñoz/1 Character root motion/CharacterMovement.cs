@@ -4,12 +4,14 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour, ICharacterComponent
 {
     [SerializeField] private Camera camera;
     [SerializeField] private FloatDampener speedX;
     [SerializeField] private FloatDampener speedY;
     [SerializeField] private float angularSpeed;
+
+    public Character ParentCharacter { get; set; }
 
     private int speedXHash;
     private int speedYHash;
@@ -44,11 +46,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetFloat(speedYHash, speedY.CurrentValue);
 
         SolveCharacterRotation();
-
-        float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
-        float rotationSpeed = Mathf.SmoothStep(0, .1f , motionMagnitude);
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
+        ApplyCharacterRotation();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -57,5 +55,12 @@ public class CharacterMovement : MonoBehaviour
 
         speedX.TargetValue = inputValue.x;
         speedY.TargetValue = inputValue.y;
+    }
+
+    private void ApplyCharacterRotation()
+    {
+        float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
+        float rotationSpeed = ParentCharacter.IsAiming ? 1 : Mathf.SmoothStep(0, .1f , motionMagnitude);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
     }
 }

@@ -3,13 +3,20 @@ using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public class Character : MonoBehaviour
 {
-    [SerializeField] Transform lockTarget;
+    Transform lockTarget;
+    [SerializeField] private bool isAiming;
 
     
     public Transform LockTarget
     {
         get => lockTarget;
         set => lockTarget = value;
+    }
+
+    public bool IsAiming
+    {
+        get => isAiming;
+        set => isAiming = value;
     }
 
     private void RegisterComponents()
@@ -23,5 +30,6 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         RegisterComponents();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

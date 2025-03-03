@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "SensorTemperatura",
+			"path": "../../../PlatformIO/Projects/SensorTemperatura"
+		},
+		{
+			"name": "MaquinaDeEstados",
+			"path": "../../../PlatformIO/Projects/MaquinaDeEstados"
+		},
+		{
+			"name": "IOT",
+			"path": "../../IOT"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "Animacion.sln",
+		"files.associations": {
+			"iostream": "cpp"
+		}
+	}
+}
