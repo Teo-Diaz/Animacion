@@ -10,6 +10,8 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     [SerializeField] private FloatDampener speedX;
     [SerializeField] private FloatDampener speedY;
     [SerializeField] private float angularSpeed;
+    [SerializeField] private Transform aimTarget;
+    [SerializeField] private float rotationThreshold;
 
     public Character ParentCharacter { get; set; }
 
@@ -46,7 +48,10 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         animator.SetFloat(speedYHash, speedY.CurrentValue);
 
         SolveCharacterRotation();
-        ApplyCharacterRotation();
+        if(!ParentCharacter.IsAiming)
+            ApplyCharacterRotation();
+        //else
+        //    ApplyCharacterRotationFromAim();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -60,7 +65,22 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     private void ApplyCharacterRotation()
     {
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
-        float rotationSpeed = ParentCharacter.IsAiming ? 1 : Mathf.SmoothStep(0, .1f , motionMagnitude);
+        float rotationSpeed = Mathf.SmoothStep(0, .1f , motionMagnitude);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
+    }
+
+    private void ApplyCharacterRotationFromAim()
+    {
+        Vector3 aimForward = Vector3.ProjectOnPlane(aimTarget.forward, transform.up).normalized;
+        Vector3 characterForward = transform.forward;
+        float angleCos = Vector3.Dot(characterForward, aimForward); // -1, 1
+        // float rotationSpeed = 0;
+        // if(Mathf.Acos(angleCos) * Mathf.Rad2Deg > rotationThreshold)
+        // {
+        //     rotationSpeed = 1;
+        // }
+
+        float rotationSpeed = Mathf.SmoothStep(0f, 1f, Mathf.Acos(angleCos) * Mathf.Rad2Deg / rotationThreshold);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
     }
 }
