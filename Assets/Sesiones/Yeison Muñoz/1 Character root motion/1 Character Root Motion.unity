@@ -717,6 +717,23 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1613839300}
   m_SourcePrefab: {fileID: 100100000, guid: 890d25f4c39c104469ae904173a9c591, type: 3}
+--- !u!1 &1999336612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3681044727000988077, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+  m_PrefabInstance: {fileID: 2097123602862080101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999336620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999336612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59fc6f08cdf52a41a2c4910ddf20b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2084434970
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +916,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: c5beb719-8215-4ec1-9418-557f784a7a9c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Character/WeaponAction[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1999336620}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnWeaponAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WaponActionController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347310179920475301, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5774811102827655368, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
       propertyPath: rotationThreshold
       value: 360
@@ -946,7 +1003,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3681044727000988077, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1999336620}
   m_SourcePrefab: {fileID: 100100000, guid: 4cd8407993866cd40b5490f0e69fa85b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
