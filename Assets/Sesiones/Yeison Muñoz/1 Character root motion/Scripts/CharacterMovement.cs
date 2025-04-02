@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
-
 public class CharacterMovement : MonoBehaviour, ICharacterComponent
 {
     [SerializeField] private Camera camera;
@@ -17,20 +16,9 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
 
     private int speedXHash;
     private int speedYHash;
-    Quaternion targetRotation;
+    private Quaternion targetRotation;
 
     private Animator animator;
-
-    private void SolveCharacterRotation()
-    {
-        Vector3 floorNormal = transform.up;
-        Vector3 cameraRealForward = camera.transform.forward;
-        float angleInterpolator = Mathf.Abs(Vector3.Dot(cameraRealForward, floorNormal));
-        Vector3 cameraForward = Vector3.Lerp(cameraRealForward, camera.transform.up, angleInterpolator).normalized;
-        Vector3 characterForward = Vector3.ProjectOnPlane(cameraForward, floorNormal).normalized;
-        Debug.DrawLine(transform.position, transform.position + cameraForward * 2, Color.magenta, 5);
-        targetRotation = Quaternion.LookRotation(characterForward, floorNormal);
-    }
 
     private void Awake()
     {
@@ -44,14 +32,17 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         speedX.Update();
         speedY.Update();
 
-        animator.SetFloat(speedXHash, speedX.CurrentValue);
-        animator.SetFloat(speedYHash, speedY.CurrentValue);
+        Vector2 input = new Vector2(speedX.CurrentValue, speedY.CurrentValue);
+        Vector3 movementDirection = GetMovementDirectionRelativeToCamera(input);
 
-        SolveCharacterRotation();
-        if(!ParentCharacter.IsAiming)
+        // Estos valores se usan como parámetros del Animator para blending
+        animator.SetFloat(speedXHash, movementDirection.x);
+        animator.SetFloat(speedYHash, movementDirection.z);
+
+        SolveCharacterRotation(movementDirection);
+
+        if (!ParentCharacter.IsAiming)
             ApplyCharacterRotation();
-        //else
-        //    ApplyCharacterRotationFromAim();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -62,10 +53,18 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         speedY.TargetValue = inputValue.y;
     }
 
+    private void SolveCharacterRotation(Vector3 movementDirection)
+    {
+        if (movementDirection.sqrMagnitude < 0.01f) return;
+
+        Vector3 flatDir = Vector3.ProjectOnPlane(movementDirection, Vector3.up).normalized;
+        targetRotation = Quaternion.LookRotation(flatDir, Vector3.up);
+    }
+
     private void ApplyCharacterRotation()
     {
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
-        float rotationSpeed = Mathf.SmoothStep(0, .1f , motionMagnitude);
+        float rotationSpeed = Mathf.SmoothStep(0, .1f, motionMagnitude);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
     }
 
@@ -73,14 +72,23 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     {
         Vector3 aimForward = Vector3.ProjectOnPlane(aimTarget.forward, transform.up).normalized;
         Vector3 characterForward = transform.forward;
-        float angleCos = Vector3.Dot(characterForward, aimForward); // -1, 1
-        // float rotationSpeed = 0;
-        // if(Mathf.Acos(angleCos) * Mathf.Rad2Deg > rotationThreshold)
-        // {
-        //     rotationSpeed = 1;
-        // }
+        float angleCos = Vector3.Dot(characterForward, aimForward);
 
         float rotationSpeed = Mathf.SmoothStep(0f, 1f, Mathf.Acos(angleCos) * Mathf.Rad2Deg / rotationThreshold);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
+    }
+
+    private Vector3 GetMovementDirectionRelativeToCamera(Vector2 input)
+    {
+        Vector3 camForward = camera.transform.forward;
+        Vector3 camRight = camera.transform.right;
+
+        camForward.y = 0f;
+        camRight.y = 0f;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        return camForward * input.y + camRight * input.x;
     }
 }
