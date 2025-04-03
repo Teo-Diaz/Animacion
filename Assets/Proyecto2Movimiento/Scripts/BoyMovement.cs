@@ -11,8 +11,9 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
     [SerializeField] private FloatDampener speedY;
     [SerializeField] private float angularSpeed;
     [SerializeField] private float rotationThreshold;
-
+    [SerializeField] private float moveSpeed = 10f;
     public Character ParentCharacter { get; set; }
+    
 
     private int speedXHash;
     private int speedYHash;
@@ -47,6 +48,9 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
         animator.SetFloat(speedYHash, speedY.CurrentValue);
 
         SolveCharacterRotation();
+
+        Vector3 moveDirection = new Vector3(speedX.CurrentValue, 0, speedY.CurrentValue).normalized;
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
