@@ -15,7 +15,8 @@ Entrega 2: Movimiento - jacobo alzate
 
 
 
-https://github.com/user-attachments/assets/7aa9d727-2cde-480c-a52b-fc4fdb304c7c
+https://github.com/user-attachments/assets/f29a6c1b-f5fb-4f18-8f18-63e8162d25eb
+
 
 
 
