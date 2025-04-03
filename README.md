@@ -23,3 +23,9 @@ Entretga 2: Movimiento/Salto - Mateo Díaz
 
 
 https://github.com/user-attachments/assets/ad24debd-9c82-4d68-bda6-9803d1f0a29f
+
+
+Entrega 2: Sistema de movimiento - Yeison Muñoz
+
+https://github.com/user-attachments/assets/b9cfd63c-2cb4-4975-98d5-dd7a8689b3a9
+
