@@ -11,7 +11,7 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
     [SerializeField] private FloatDampener speedY;
     [SerializeField] private float angularSpeed;
     [SerializeField] private float rotationThreshold;
-    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float moveSpeed = 5f;
     public Character ParentCharacter { get; set; }
     
 
@@ -66,5 +66,12 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
         float rotationSpeed = Mathf.SmoothStep(0, .1f, motionMagnitude);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
+    }
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            animator.SetTrigger("Jump");
+        }
     }
 }
