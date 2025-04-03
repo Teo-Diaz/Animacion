@@ -438,7 +438,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 604884378}
+      - m_Target: {fileID: 604884382}
         m_TargetAssemblyTypeName: BoyMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 604884379}
+      - m_Target: {fileID: 604884383}
         m_TargetAssemblyTypeName: BoyLook, Assembly-CSharp
         m_MethodName: OnLook
         m_Mode: 0
@@ -472,8 +472,8 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &604884378
+  m_Camera: {fileID: 2084434972}
+--- !u!114 &604884382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,12 +487,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 2084434972}
   speedX:
-    smoothTime: 0.5
+    smoothTime: 50
   speedY:
-    smoothTime: 0.5
-  angularSpeed: 90
-  rotationThreshold: 360
---- !u!114 &604884379
+    smoothTime: 50
+  angularSpeed: 50
+  rotationThreshold: 50
+--- !u!114 &604884383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,10 +504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e19fae120ad63c4b953101183b83532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 242100022}
-  horizontalRotationSpeed: 20
-  verticalRotationSpeed: 10
-  verticalRotationLimits: {x: -60, y: 75}
+  target: {fileID: 0}
+  horizontalRotationSpeed: 150
+  verticalRotationSpeed: 150
+  verticalRotationLimits: {x: -60, y: 60}
 --- !u!1 &656503334
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,10 +728,10 @@ PrefabInstance:
       addedObject: {fileID: 604884377}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a41b3c14939705d46b0d88364ae310cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 604884378}
+      addedObject: {fileID: 604884383}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a41b3c14939705d46b0d88364ae310cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 604884379}
+      addedObject: {fileID: 604884382}
   m_SourcePrefab: {fileID: 100100000, guid: a41b3c14939705d46b0d88364ae310cb, type: 3}
 --- !u!1 &2084434970
 GameObject:
