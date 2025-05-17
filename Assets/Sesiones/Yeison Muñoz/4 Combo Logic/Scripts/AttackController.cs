@@ -2,7 +2,6 @@ using UnityEngine;
 using CallbackContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent (typeof(CharacterState))]
 public class AttackController : MonoBehaviour
 {
 
@@ -10,32 +9,18 @@ public class AttackController : MonoBehaviour
     [SerializeField] private float heavyAttackCost;
 
     private Animator anim;
-    private CharacterState characterState;
-
-    public FloatUEvent OnAttack;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        characterState = GetComponent<CharacterState>();
     }
-
-    //private bool CanAttack()
-    //{
-    //    return anim.GetFloat("ControlWeight") > 0;
-    //}
 
     public void OnLightAttack(CallbackContext ctx)
     {
         if (ctx.performed)
         {
-
-            //anim.SetTrigger("LightAttack");
-            //bool attackState = anim.GetFloat("ControlWeight") > 0;
-            //if(CanAttack())
-            //{
-            //    //OnAttack?.Invoke(lightAttackCost);
-            //}
+            if (Game.Instance.PlayerOne.CurrentStamina > 0)
+                anim.SetTrigger("LightAttack");
         }
     }
 
@@ -43,8 +28,19 @@ public class AttackController : MonoBehaviour
     {
         if (ctx.performed || ctx.canceled)
         {
-            //anim.SetTrigger("HeavyAttack");
-            ////OnAttack?.Invoke(heavyAttackCost);
+            if (Game.Instance.PlayerOne.CurrentStamina > 0)
+                anim.SetTrigger("HeavyAttack");
         }
+    }
+
+    public void DepleteStamina(float amount)
+    {
+        Game.Instance.PlayerOne.DepleteStamina(amount);
+    }
+
+    public void DepleteStaminaWithParameter(string parameter)
+    {
+        float motionValue = GetComponent<Animator>().GetFloat(parameter);
+        DepleteStamina(motionValue);
     }
 }

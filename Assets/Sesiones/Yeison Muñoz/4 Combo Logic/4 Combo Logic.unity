@@ -1312,7 +1312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448210442951839977, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
       propertyPath: startStamina
-      value: 120
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3626363349803813226, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
       propertyPath: m_LocalPosition.x

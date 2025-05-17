@@ -27,8 +27,15 @@ public class CharacterState : MonoBehaviour
         currentStamina -= GetStaminaDepletion() * amount;
     }
 
+    private void Start()
+    {
+        currentStamina = startStamina;
+    }
+
     private void Update()
     {
         RegenerateStamina(staminaRegen * Time.deltaTime);
     }
+
+    public float CurrentStamina => currentStamina;
 }
