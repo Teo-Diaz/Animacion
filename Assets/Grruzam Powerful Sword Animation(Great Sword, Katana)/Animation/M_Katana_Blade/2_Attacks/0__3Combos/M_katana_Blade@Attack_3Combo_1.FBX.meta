@@ -1091,10 +1091,17 @@ ModelImporter:
           rotationOrder: 4
       events:
       - time: 0.24491654
-        functionName: DepleteStamina
+        functionName: ToggleAttackHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0.4
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.42031524
+        functionName: ToggleAttackHitbox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask:

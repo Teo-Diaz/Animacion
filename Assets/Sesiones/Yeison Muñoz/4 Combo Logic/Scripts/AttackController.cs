@@ -8,11 +8,14 @@ public class AttackController : MonoBehaviour
     [SerializeField] private float lightAttackCost;
     [SerializeField] private float heavyAttackCost;
 
+    private AttackHitboxController hitboxController;
+
     private Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        hitboxController = GetComponent<AttackHitboxController>();
     }
 
     public void OnLightAttack(CallbackContext ctx)
@@ -42,5 +45,15 @@ public class AttackController : MonoBehaviour
     {
         float motionValue = GetComponent<Animator>().GetFloat(parameter);
         DepleteStamina(motionValue);
+    }
+
+    public void ToggleAttackHitbox(int hitboxId)
+    {
+        hitboxController.ToggleHitboxes(hitboxId);
+    }
+
+    public void CleanupAttackHitbox()
+    {
+        hitboxController.CleanupHitboxes();
     }
 }
