@@ -23,14 +23,13 @@ public class CharacterState : MonoBehaviour
         return 60;
     }
 
-    public void DepleteHealth(float amount)
+    public void DepleteHealth(float amount, out bool zeroHealth)
     {
         currentHealth -= amount;
+        zeroHealth = false;
         if (currentHealth <= 0)
         {
-            #warning TODO Death
-            //se murio
-            Debug.Log($"({name}) DEAD");
+            zeroHealth = true;
         }
     }
 

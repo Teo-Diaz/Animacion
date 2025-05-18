@@ -36,9 +36,10 @@ public class DamageController : MonoBehaviour
     {
         Vector3 damageDirection = Vector3.zero;
         int damageLevel = 0;
+        bool isDead = false;
         foreach(DamageMessage message in damageList)
         {
-            Game.Instance.PlayerOne.DepleteHealth(message.amount);
+            Game.Instance.PlayerOne.DepleteHealth(message.amount, out isDead); // -BAD
             damageDirection += (message.sender.transform.position - transform.position).normalized;
             damageLevel = Mathf.Max(damageLevel, (int)message.damageLevel);
         }
@@ -49,6 +50,8 @@ public class DamageController : MonoBehaviour
         animator.SetFloat("DamageDirection", (damageAngle/180) *0.5f + 0.5f );
         animator.SetInteger("DamageLevel", damageLevel);
         animator.SetTrigger("Damage");
+        if (isDead)
+            animator.SetTrigger("Die");
         damageList.Clear();
     }
 }
