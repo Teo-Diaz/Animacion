@@ -7,9 +7,10 @@ public class CharacterState : MonoBehaviour
 {
     [SerializeField] private float startStamina;
     [SerializeField] private float staminaRegen;
+    [SerializeField] private float startHealth;
 
     [SerializeField] private float currentStamina;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
 
     private void RegenerateStamina(float regenAmount)
     {
@@ -20,6 +21,17 @@ public class CharacterState : MonoBehaviour
     {
         //sistema de inventario *1/stat_fuerza * 1/buff_fuerza
         return 60;
+    }
+
+    public void DepleteHealth(float amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            #warning TODO Death
+            //se murio
+            Debug.Log($"({name}) DEAD");
+        }
     }
 
     public void DepleteStamina(float amount)

@@ -17,7 +17,7 @@ public class Hitbox : MonoBehaviour, IDamageSender<DamageMessage>
     {
         DamageMessage message = new DamageMessage
         {
-            sender = this.gameObject,
+            sender = transform.root.gameObject,
             amount = damage
         };
         receiver.ReceiveDamage(message);
