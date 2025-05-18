@@ -145,7 +145,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -349,7 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984daf44e111fea45bb72bb597a1132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damageMessage:
+    sender: {fileID: 216155064}
+    amount: 10
+    damageLevel: 0
 --- !u!65 &216155066
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -465,7 +468,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -619,7 +622,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -652,7 +655,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -929,7 +932,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -998,6 +1001,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400084, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
   m_PrefabInstance: {fileID: 1030855012}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &619983448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8282908316738941283, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
+  m_PrefabInstance: {fileID: 7149730343363585654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &619983456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619983448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db1131fee802264a805d1ea9b61766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreDamage: 0
 --- !u!4 &621559526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400052, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
@@ -1146,7 +1167,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -1522,7 +1543,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -1551,7 +1572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984daf44e111fea45bb72bb597a1132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 500
+  damageMessage:
+    sender: {fileID: 0}
+    amount: 0
+    damageLevel: 0
 --- !u!4 &1152615270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400050, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
@@ -2026,7 +2050,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -2075,18 +2099,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2040647484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040647481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db1131fee802264a805d1ea9b61766a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2044161037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400076, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
@@ -2253,7 +2265,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040647484}
+      - m_Target: {fileID: 619983456}
         m_TargetAssemblyTypeName: DamageController, Assembly-CSharp
         m_MethodName: EnqueueDamage
         m_Mode: 0
@@ -2373,9 +2385,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8919567065992512348, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2040647483}
-    - targetCorrespondingSourceObject: {fileID: 8919567065992512348, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8282908316738941283, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2040647484}
+      addedObject: {fileID: 619983456}
     - targetCorrespondingSourceObject: {fileID: 7390761768709492976, guid: 7cfc3fbd9377ab54eb10f8a611ff0646, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1129405074}
