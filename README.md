@@ -5,6 +5,23 @@
   - Yeison Muñoz
   - Alejandro Velásquez
 
+## Entrega 3: Combate 
+ ### - Yeison Muñoz
+   - Modo Arma ligera (Click izquierdo)
+     
+https://github.com/user-attachments/assets/ae4479b1-4e9f-4353-9775-ef78e3c62216
+   - Modo Arma pesada (Click derecho)
+
+https://github.com/user-attachments/assets/cd344676-f0d2-4d51-b881-68a1e4bd945f
+   - Daño y muerte (WASD QE para mover cubo)
+
+https://github.com/user-attachments/assets/02e4af3e-6eb8-4344-94f7-cb42ae7f8529
+
+
+
+
+
+
 ## Entrega 2: Movimiento 
  ### - Jacobo Alzate
  https://github.com/user-attachments/assets/8b63bc06-3994-41de-8034-e782fe66548d
