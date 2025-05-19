@@ -5,12 +5,12 @@ using UnityEngine;
 // summary
 public class CharacterState : MonoBehaviour
 {
-    [SerializeField] private float startStamina;
-    [SerializeField] private float staminaRegen;
-    [SerializeField] private float startHealth;
+    [SerializeField] private float startStamina = 1000.0f;
+    [SerializeField] private float staminaRegen = 1000.0f;
+    [SerializeField] private float startHealth = 100.0f;
 
     [SerializeField] private float currentStamina;
-    [SerializeField] private float currentHealth;
+    [SerializeField] private float currentHealth = 100.0f;
 
     private void RegenerateStamina(float regenAmount)
     {
