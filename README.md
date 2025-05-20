@@ -6,6 +6,10 @@
   - Alejandro Velásquez
 
 ## Entrega 3: Combate 
+### - Diagrama de flujo y Animator
+   ![image](https://github.com/user-attachments/assets/c0c1b602-8715-4f55-b5a1-94587154927b)
+   ![Animators](https://github.com/user-attachments/assets/4a4ddc6d-3e77-4666-8733-839daf53110e)
+
  ### - Yeison Muñoz
    - Modo Arma ligera (Click izquierdo)
      
@@ -16,11 +20,6 @@ https://github.com/user-attachments/assets/cd344676-f0d2-4d51-b881-68a1e4bd945f
    - Daño y muerte (WASD QE para mover cubo)
 
 https://github.com/user-attachments/assets/02e4af3e-6eb8-4344-94f7-cb42ae7f8529
-
-
-
-
-
 
 ## Entrega 2: Movimiento 
  ### - Jacobo Alzate
