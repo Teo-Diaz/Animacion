@@ -347,7 +347,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 939202044}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: OnChangeWeapon
+        m_MethodName: ChangeWeapon
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -363,7 +363,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 939202044}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: OnLightAttack
+        m_MethodName: LightAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -379,7 +379,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 939202044}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: OnHeavyAttack
+        m_MethodName: HeavyAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -842,8 +842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sword: {fileID: 1096261842}
-  maxCombo: 3
-  comboResetTime: 0.8
+  swordMaterial: {fileID: 0}
+  dissolveDuration: 1
 --- !u!4 &991054226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6543636564c1f6d42904074be32eba52, type: 3}

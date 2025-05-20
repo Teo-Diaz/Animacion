@@ -56,14 +56,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.59298056
-        functionName: AE_EnableComboWindow
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 30886ce874a873d4b98ef8f95f54133a, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9833729
-        functionName: AE_EndAttack
+        functionName: OnAttackEnding
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 30886ce874a873d4b98ef8f95f54133a, type: 3}
         floatParameter: 0

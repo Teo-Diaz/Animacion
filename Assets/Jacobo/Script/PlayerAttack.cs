@@ -6,90 +6,90 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject Sword;
-
-    [Header("Combos")]
-    [SerializeField] private int maxCombo = 3;
-    [SerializeField] private float comboResetTime = 0.8f;
-    private enum WeaponType { Punch = 0, Sword = 1 }
     private Animator anim;
-    private WeaponType currentWeapon = WeaponType.Punch;
-    private int   comboIndex;
-    private float lastAttackTime;
-    private bool  comboWindowOpen;
-
-    // ─────────  Hashes de parámetros del Animator  ─────────
-    private static readonly int h_Attack        = Animator.StringToHash("Attack");
-    private static readonly int h_WeaponType    = Animator.StringToHash("WeaponType");
-    private static readonly int h_CanAttack     = Animator.StringToHash("canAttack");
-    private static readonly int h_ChangeWeapon  = Animator.StringToHash("ChangeWeapon");
-    private static readonly int h_ComboIndex    = Animator.StringToHash("ComboIndex");
-    private static readonly int h_IsHeavy       = Animator.StringToHash("IsHeavy");   // opcional
+    private int currentWeapon = 0;
+    [SerializeField] private GameObject Sword;
+    public Material swordMaterial;
+    public float dissolveDuration = 1.0f;
 
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-
-        anim.SetBool(h_CanAttack, true);
-        anim.SetInteger(h_WeaponType, (int)currentWeapon);
+        anim.SetBool("canAttack", true);
+        anim.SetInteger("WeaponType", currentWeapon);
         UpdateWeaponVisibility();
     }
 
-    public void OnLightAttack(InputAction.CallbackContext ctx)
+    public void LightAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed) TryAttack(isHeavy: false);
+        if (!this.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        if (!anim.GetBool("canAttack")) return;
+        bool val = ctx.performed;
+        if (val)
+        {
+            anim.SetTrigger("Attack");
+            anim.SetBool("canAttack", false);
+        }
     }
 
-    public void OnHeavyAttack(InputAction.CallbackContext ctx)
+    public void OnAttackEnding()
     {
-        if (ctx.performed) TryAttack(isHeavy: true);
+        anim.SetBool("canAttack", true);
+        anim.SetBool("HeavyAttack", false);
     }
 
-    public void OnChangeWeapon(InputAction.CallbackContext ctx)
+    public void HeavyAttack(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
-        if (!anim.GetBool(h_CanAttack)) return;
-        ToggleWeapon();
+        if (!anim.GetBool("canAttack")) return;
+        bool val = ctx.performed;
+        if (val)
+        {
+            anim.SetTrigger("Attack");
+            anim.SetBool("canAttack", false);
+            anim.SetBool("HeavyAttack", true);
+        }
     }
 
-    private void TryAttack(bool isHeavy)
+    public void ChangeWeapon(InputAction.CallbackContext ctx)
     {
-        // Reiniciar combo si tardó demasiado
-        if (Time.time - lastAttackTime > comboResetTime)
-            comboIndex = 0;
-
-        if (comboIndex > 0 && !comboWindowOpen) return;
-
-        anim.SetInteger(h_ComboIndex, comboIndex + 1);
-        anim.SetBool   (h_IsHeavy, isHeavy);
-        anim.SetTrigger(h_Attack);
-        anim.SetBool   (h_CanAttack,  false);
-
-        comboIndex = (comboIndex + 1) % maxCombo;
-        lastAttackTime = Time.time;
-        comboWindowOpen = false;
+        if (ctx.performed)
+        {
+            if (currentWeapon == 0) // Cambiar de puño a espada
+            {
+                anim.SetTrigger("ChangeWeapon");
+                currentWeapon = 1;
+                Sword.SetActive(true);
+            }
+            else // Cambiar de espada a puños
+            {
+                anim.SetTrigger("ChangeWeapon");
+                currentWeapon = 0;
+                Sword.SetActive(false); 
+            }
+            anim.SetInteger("WeaponType", currentWeapon);
+        }
     }
-
-    private void ToggleWeapon()
+    
+    public void OnWeaponChangeComplete()
     {
-        currentWeapon = currentWeapon == WeaponType.Punch ? WeaponType.Sword : WeaponType.Punch;
-        anim.SetTrigger(h_ChangeWeapon);
-        anim.SetInteger(h_WeaponType, (int)currentWeapon);
-
-        // Aquí podrías reproducir VFX de desenvaine / envainar
         UpdateWeaponVisibility();
     }
 
-    public void AE_EnableComboWindow() => comboWindowOpen = true;
-    public void AE_EndAttack()
-    {
-        comboWindowOpen = false;
-        anim.SetBool(h_CanAttack, true);
-    }
     private void UpdateWeaponVisibility()
     {
-        if (Sword != null)
-            Sword.SetActive(currentWeapon == WeaponType.Sword);
+        if (currentWeapon == 1) // Espada equipada
+        {
+            Sword.SetActive(true);
+        }
+        else // Espada guardada
+        {
+            Sword.SetActive(false);
+        }
     }
+
 }

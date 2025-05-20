@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73c664abc26589e48af25cb8788369ab
+guid: 2efe20d99422ca84fab60bf6a3be45a6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SHA2
+      name: PHA 3
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 109
+      lastFrame: 75
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -55,15 +55,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5529984
-        functionName: AE_EnableComboWindow
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 30886ce874a873d4b98ef8f95f54133a, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9830932
-        functionName: AE_EndAttack
+      - time: 0.5560914
+        functionName: OnAttackEnding
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 30886ce874a873d4b98ef8f95f54133a, type: 3}
         floatParameter: 0
