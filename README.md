@@ -21,6 +21,11 @@ https://github.com/user-attachments/assets/cd344676-f0d2-4d51-b881-68a1e4bd945f
 
 https://github.com/user-attachments/assets/02e4af3e-6eb8-4344-94f7-cb42ae7f8529
 
+### - Jacobo Alzate
+  - Combo arma ligera (puños) y arma pesada (espada)
+
+https://github.com/user-attachments/assets/061d8df5-226f-4de1-8e2b-0ad3e3ca32ea
+
 ## Entrega 2: Movimiento 
  ### - Jacobo Alzate
  https://github.com/user-attachments/assets/8b63bc06-3994-41de-8034-e782fe66548d
