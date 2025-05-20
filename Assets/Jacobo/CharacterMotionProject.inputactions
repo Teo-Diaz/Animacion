@@ -24,27 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeWeapon",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "f84b13ec-d653-42b8-ab89-96e6e1f42abb",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "LightAttack",
-                    "type": "Button",
-                    "id": "40fa0804-5388-4a45-823b-6aa285f17b5c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "HeavyAttack",
-                    "type": "Button",
-                    "id": "05fc4730-8454-437d-9e5b-2a75607abacc",
+                    "id": "1b37a738-4a79-4ca1-a551-625fcb43e74d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -120,34 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ee6fedc3-2e12-43d8-9343-8a2956ae1587",
-                    "path": "<Keyboard>/tab",
+                    "id": "8cd1fe85-d62b-48d8-89b2-357ff596a99c",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeWeapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d7be2d9f-9657-477c-9fa5-6fd5835c6f43",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LightAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d6bce8ef-38a0-446b-a971-a2ef5cfeb50d",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyAttack",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
