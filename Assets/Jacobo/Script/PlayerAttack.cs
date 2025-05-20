@@ -63,13 +63,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 anim.SetTrigger("ChangeWeapon");
                 currentWeapon = 1;
-                Sword.SetActive(true);
             }
             else // Cambiar de espada a puños
             {
                 anim.SetTrigger("ChangeWeapon");
                 currentWeapon = 0;
-                Sword.SetActive(false); 
             }
             anim.SetInteger("WeaponType", currentWeapon);
         }
