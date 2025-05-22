@@ -5,11 +5,10 @@ public struct DamagePayload
     public enum DamageSeverity
     {
         Light = 1,
-        Strong = 2,
-        Critical = 3
+        Critical = 2,
     }
     
-    public float damage;
+    public float damageAmount;
     public Vector3 position;
     public DamageSeverity severity;
 }

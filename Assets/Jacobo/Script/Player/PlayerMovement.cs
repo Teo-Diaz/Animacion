@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour, ICharacterComponent
         animator.SetFloat(speedYHash, speedY.CurrentValue);
 
         SolveCharacterRotation();
-        ApplyCharacterRotation(); 
+        ApplyCharacterRotation();
     }
 
     public void OnMove(CallbackContext ctx)
@@ -60,5 +60,11 @@ public class PlayerMovement : MonoBehaviour, ICharacterComponent
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
         float rotationSpeed = Mathf.SmoothStep(0, .1f, motionMagnitude);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * Time.deltaTime);
+    }
+    
+    public void ResetInput()
+    {
+        speedX.TargetValue = 0f;
+        speedY.TargetValue = 0f;
     }
 }
