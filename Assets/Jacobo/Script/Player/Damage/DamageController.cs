@@ -6,6 +6,7 @@ public class DamageController : MonoBehaviour, IDamageReceiver
 {
     private Animator anim;
     [SerializeField] private int faction;
+    public PanelController panelController;
 
     private void Awake()
     {
@@ -63,6 +64,11 @@ public class DamageController : MonoBehaviour, IDamageReceiver
             input.enabled = false;
             GetComponent<PlayerMovement>().enabled = false;
         }
+    }
+
+    public void TriggerDeathPanel()
+    {
+        panelController.ShowDeathPanel();
     }
 
     public int Faction => faction;
