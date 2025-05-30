@@ -6,14 +6,18 @@ public class DamageCube : MonoBehaviour, IDamageSender
     [SerializeField] private int faction = 99;
     [SerializeField] private float damage = 10f;
     [SerializeField] private DamagePayload.DamageSeverity severity = DamagePayload.DamageSeverity.Light;
+    [SerializeField] private LayerMask damageableLayers;
 
     public int Faction => faction;
 
     private void OnTriggerEnter(Collider other)
     {
+        if ((damageableLayers.value & (1 << other.gameObject.layer)) == 0)
+            return;
+
         if (other.TryGetComponent<IDamageReceiver>(out IDamageReceiver receiver))
         {
-            SendDamage(receiver); 
+            SendDamage(receiver);
         }
     }
 
@@ -21,7 +25,9 @@ public class DamageCube : MonoBehaviour, IDamageSender
     {
         DamagePayload payload = new DamagePayload
         {
-            damageAmount = damage, position = transform.position, severity = severity
+            damageAmount = damage,
+            position = transform.position,
+            severity = severity
         };
 
         target.ReceiveDamage(this, payload);

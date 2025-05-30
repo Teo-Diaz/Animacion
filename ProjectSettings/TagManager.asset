@@ -13,12 +13,12 @@ TagManager:
   - UI
   - Enemies
   - Walls
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerAttack
+  - Enemy
+  - EnemyAttack
+  - Player
+  - Environment
+  - EnemyHitbox
   - 
   - 
   - 

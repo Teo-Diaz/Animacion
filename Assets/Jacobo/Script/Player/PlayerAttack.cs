@@ -11,6 +11,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject Sword;
     public Material swordMaterial;
     public float dissolveDuration = 1.0f;
+    [SerializeField] private GameObject punchRHitbox;
+    [SerializeField] private GameObject punchLHitbox;
+    [SerializeField] private GameObject swordHitbox;
 
 
     private void Awake()
@@ -19,6 +22,11 @@ public class PlayerAttack : MonoBehaviour
         anim.SetBool("canAttack", true);
         anim.SetInteger("WeaponType", currentWeapon);
         UpdateWeaponVisibility();
+    }
+
+    void Start()
+    {
+        DisableHitbox();
     }
 
     public void LightAttack(InputAction.CallbackContext ctx)
@@ -72,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetInteger("WeaponType", currentWeapon);
         }
     }
-    
+
     public void OnWeaponChangeComplete()
     {
         UpdateWeaponVisibility();
@@ -88,6 +96,29 @@ public class PlayerAttack : MonoBehaviour
         {
             Sword.SetActive(false);
         }
+    }
+    
+    //Activar el hitbox al inicia el golpe
+    public void EnableHitbox()
+    {
+        if (currentWeapon == 0)
+        {
+            punchRHitbox.SetActive(true);
+            punchLHitbox.SetActive(true);
+        }
+        else
+        {
+            swordHitbox.SetActive(true);
+        }
+
+    }
+
+    // AnimEvent: Desactivar hitbox al finalizar golpe
+    public void DisableHitbox()
+    {
+        punchRHitbox.SetActive(false);
+        punchLHitbox.SetActive(false);
+        swordHitbox.SetActive(false);
     }
 
 }
