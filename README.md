@@ -26,6 +26,10 @@ https://github.com/user-attachments/assets/02e4af3e-6eb8-4344-94f7-cb42ae7f8529
 
 https://github.com/user-attachments/assets/061d8df5-226f-4de1-8e2b-0ad3e3ca32ea
 
+### - Alejandro Velásquez Rave
+
+https://github.com/user-attachments/assets/334e4a46-9ed1-4540-9df5-1c669e147efb
+
 ## Entrega 2: Movimiento 
  ### - Jacobo Alzate
  https://github.com/user-attachments/assets/8b63bc06-3994-41de-8034-e782fe66548d
