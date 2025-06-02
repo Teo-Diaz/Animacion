@@ -1025,10 +1025,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.98804504
-        functionName: TriggerDeathPanel
+      - time: 1
+        functionName: OnDeath
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 45cf1f5b0b8694e45b8b477744ea0a24, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: cf47d012150b2064a835ddf3270bf398, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

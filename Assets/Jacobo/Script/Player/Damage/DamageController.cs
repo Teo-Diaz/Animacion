@@ -66,11 +66,6 @@ public class DamageController : MonoBehaviour, IDamageReceiver
         }
     }
 
-    public void TriggerDeathPanel()
-    {
-        panelController.ShowDeathPanel();
-    }
-
     public int Faction => faction;
 
 }

@@ -1,13 +1,18 @@
+using System.Collections; 
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageReceiver
 {
     [SerializeField] private int maxHealth = 100;
-    private float currentHealth;
+    private Animator animator;
+    [SerializeField] private float currentHealth;
+    public GameObject panelWin; 
+
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     public void ReceiveDamage(IDamageSender perpetrator, DamagePayload payload)
@@ -24,7 +29,28 @@ public class EnemyHealth : MonoBehaviour, IDamageReceiver
     private void Die()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
-        // Aquí podrías reproducir una animación de muerte o destruir el objeto
-        Destroy(gameObject);
+        animator.SetTrigger("Die");
+        animator.SetBool("Dead", true);
+        panelWin.SetActive(true); 
+
+        StartCoroutine(WaitAndDisable());
+
     }
+    
+    private IEnumerator WaitAndDisable()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        if (TryGetComponent<EnemyState>(out var ai))
+            ai.enabled = false;
+
+        if (TryGetComponent<UnityEngine.AI.NavMeshAgent>(out var agent))
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        this.enabled = false;
+    }
+    
 }
