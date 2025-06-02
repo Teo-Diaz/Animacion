@@ -4,16 +4,15 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
 
-public class BoyMovement : MonoBehaviour, ICharacterComponent
+public class BoyMovement : MonoBehaviour //ICharacterComponent
 {
     [SerializeField] private Camera camera;
     [SerializeField] private FloatDampener speedX;
     [SerializeField] private FloatDampener speedY;
     [SerializeField] private float angularSpeed;
     [SerializeField] private float rotationThreshold;
-    [SerializeField] private float moveSpeed = 5f;
-    public Character ParentCharacter { get; set; }
-    
+
+    //public Character ParentCharacter { get; set; }
 
     private int speedXHash;
     private int speedYHash;
@@ -48,9 +47,6 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
         animator.SetFloat(speedYHash, speedY.CurrentValue);
 
         SolveCharacterRotation();
-
-        Vector3 moveDirection = new Vector3(speedX.CurrentValue, 0, speedY.CurrentValue).normalized;
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -66,12 +62,5 @@ public class BoyMovement : MonoBehaviour, ICharacterComponent
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
         float rotationSpeed = Mathf.SmoothStep(0, .1f, motionMagnitude);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, angularSpeed * rotationSpeed);
-    }
-    public void OnJump(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            animator.SetTrigger("Jump");
-        }
     }
 }
