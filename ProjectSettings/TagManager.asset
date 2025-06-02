@@ -8,17 +8,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Walkable
   - Water
   - UI
   - Enemies
   - Walls
-  - groundLayer
-  - AttackHitbox
-  - Hitbox
-  - 
-  - 
-  - 
+  - PlayerAttack
+  - Enemy
+  - EnemyAttack
+  - Player
+  - Environment
+  - EnemyHitbox
   - 
   - 
   - 
