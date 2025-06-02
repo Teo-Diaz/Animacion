@@ -1,6 +1,6 @@
 # Animacion
 
-Entrega 1: Rigs - Yeison Muñoz
+Entrega 1:
 
 
 
