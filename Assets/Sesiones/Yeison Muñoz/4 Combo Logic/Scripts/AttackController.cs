@@ -12,6 +12,9 @@ public class AttackController : MonoBehaviour
 
     private Animator anim;
 
+    public bool _lightAttack { get; set; }
+    public bool _heavyAttack { get;  set; }
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -24,7 +27,10 @@ public class AttackController : MonoBehaviour
         {
             if (Game.Instance.PlayerOne.CurrentStamina > 0)
                 anim.SetTrigger("LightAttack");
+            
         }
+        _lightAttack = true;
+        _heavyAttack = false;
     }
 
     public void OnHeavyAttack(CallbackContext ctx)
@@ -33,7 +39,10 @@ public class AttackController : MonoBehaviour
         {
             if (Game.Instance.PlayerOne.CurrentStamina > 0)
                 anim.SetTrigger("HeavyAttack");
+            
         }
+        _lightAttack = false;
+        _heavyAttack = true;
     }
 
     public void DepleteStamina(float amount)
