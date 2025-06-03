@@ -78,6 +78,7 @@ public class PlayerAttack : MonoBehaviour
                 currentWeapon = 0;
             }
             anim.SetInteger("WeaponType", currentWeapon);
+            UpdateWeaponVisibility();
         }
     }
 

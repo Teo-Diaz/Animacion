@@ -48,7 +48,7 @@ public class LockTarget : MonoBehaviour, ICharacterComponent
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
+    } 
 
 }
 #endif

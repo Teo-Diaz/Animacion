@@ -19,6 +19,10 @@ public class EnemyHealth : MonoBehaviour, IDamageReceiver
     {
         currentHealth -= payload.damageAmount;
         Debug.Log($"{gameObject.name} recibió {payload.damageAmount} de daño. Vida restante: {currentHealth}");
+        if (currentHealth > 0)
+        {
+            animator.SetTrigger("Hit"); // Animación de daño si sigue vivo
+        }
 
         if (currentHealth <= 0)
         {
